@@ -7,16 +7,21 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {stocks} from './data';
+import {initialStocks} from './data';
 import Card from './Card';
 import {showStockDetails, showStockSearch} from './navigation';
+import {useState} from 'react';
 
 const App = ({componentId}) => {
+  const [allStocks, setStock] = useState(initialStocks);
+
+  const addStock = stock => setStock(allStocks.concat(stock));
+
   return (
     <View style={s.root}>
       <StatusBar barStyle="dark-content" />
       <FlatList
-        data={stocks}
+        data={allStocks}
         keyExtractor={item => item.id}
         renderItem={({item}) => (
           <Card
@@ -26,7 +31,9 @@ const App = ({componentId}) => {
         )}
       />
 
-      <TouchableOpacity style={s.button} onPress={showStockSearch}>
+      <TouchableOpacity
+        style={s.button}
+        onPress={() => showStockSearch().then(addStock)}>
         <Text style={s.buttonText}>+</Text>
       </TouchableOpacity>
     </View>

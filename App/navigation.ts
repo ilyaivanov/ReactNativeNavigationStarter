@@ -17,11 +17,17 @@ export const showStockDetails = (compId: string, stock: Stock) =>
     },
   });
 
-export const showStockSearch = () =>
-  Navigation.showModal({
-    component: {
-      name: STOCK_SEARCH,
-    },
-  }).catch(() => {
-    // we do nothing on modal dismiss
-  });
+export const showStockSearch = (): Promise<Stock> =>
+  // @ts-ignore
+  new Promise((resolve, reject) =>
+    Navigation.showModal({
+      component: {
+        name: STOCK_SEARCH,
+        passProps: {
+          onStockSelect: stock => {
+            resolve(stock);
+          },
+        },
+      },
+    }).catch(reject),
+  );

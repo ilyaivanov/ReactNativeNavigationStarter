@@ -8,7 +8,7 @@ export default ({stock, onPress}: {stock: Stock, onPress}) => (
       <Text style={s.shorthandText}>{stock.short}</Text>
     </View>
     <View style={s.cardBody}>
-      <Text style={s.amountText}>${stock.value}</Text>
+      <Text style={s.amountText}>${stock.value.toFixed(2)}</Text>
       <Text style={s.titleText}>{stock.title}</Text>
     </View>
   </TouchableOpacity>

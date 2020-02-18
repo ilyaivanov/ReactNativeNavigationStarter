@@ -6,7 +6,7 @@ const StockDetails = ({stock}: {stock: Stock}) => {
   return (
     <View style={{flex: 1}}>
       <View style={s.valueContainer}>
-        <Text style={s.value}>${stock.value}</Text>
+        <Text style={s.value}>${stock.value.toFixed(2)}</Text>
       </View>
       <Text style={s.title}>{stock.short}</Text>
     </View>
