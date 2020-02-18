@@ -70,8 +70,11 @@ function generateRandomStocks(): Stock[] {
 
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const randomLetter = () => alphabet[randomInteger(0, alphabet.length)];
-const randomInteger = (from, to) => Math.round(from + Math.random() * to);
-
+const randomInteger = (from, to) => {
+  const min = Math.ceil(from);
+  const max = Math.floor(to);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
 // @ts-ignore
 const createArrayOfSize = (size: int): any[] => Array.from(new Array(size));
 
