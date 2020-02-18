@@ -7,7 +7,7 @@ const App = ({componentId}) => {
     <SafeAreaView>
       <TouchableOpacity onPress={() => Navigation.pop(componentId)} >
         <Text>
-          go Back
+          Search
         </Text>
       </TouchableOpacity>
       <Text>Sample</Text>
